@@ -1,0 +1,56 @@
+
+{
+    "article_type": "tech",
+    "body_letters_count": 849,
+    "body_updated_at": "2021-04-02T19:32:32.584+09:00",
+    "comments_count": 0,
+    "created_at": "2021-04-02T19:28:56.319+09:00",
+    "emoji": "\ud83d\udd16",
+    "id": 29562,
+    "is_suspending_private": false,
+    "liked_count": 3,
+    "published": true,
+    "published_at": "2021-04-02T19:28:56.219+09:00",
+    "reading_time": 0,
+    "slug": "swiftui-zucks",
+    "source_repo_updated_at": "2021-04-02T19:32:32.584+09:00",
+    "title": "SwiftUI\u3067Zucks\u3092\u5229\u7528\u3057\u3066\u30d0\u30ca\u30fc\u5e83\u544a\u3092\u8868\u793a\u3059\u308b",
+    "topics": [
+        {
+            "display_name": "zucks",
+            "id": 6435,
+            "image_url": null,
+            "name": "zucks",
+            "taggings_count": 1
+        },
+        {
+            "display_name": "SwiftUI",
+            "id": 393,
+            "image_url": "https://storage.googleapis.com/zenn-user-upload/topics/9b3c8449b6.jpeg",
+            "name": "swiftui",
+            "taggings_count": 97
+        },
+        {
+            "display_name": "Swift",
+            "id": 115,
+            "image_url": "https://storage.googleapis.com/zenn-topics/swift.png",
+            "name": "swift",
+            "taggings_count": 348
+        },
+        {
+            "display_name": "iOS",
+            "id": 62,
+            "image_url": "https://storage.googleapis.com/zenn-topics/ios.png",
+            "name": "ios",
+            "taggings_count": 428
+        }
+    ],
+    "updated_at": "2021-04-04T07:15:15.600+09:00",
+    "user": {
+        "avatar_small_url": "https://storage.googleapis.com/zenn-user-upload/avatar/icon_d8a9473a36.jpeg",
+        "id": 60,
+        "name": "yorifuji",
+        "username": "yorifuji"
+    }
+}
+
