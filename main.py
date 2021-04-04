@@ -1,21 +1,24 @@
-
 import json
-import urllib
-
-username='yorifuji'
-
-params = urllib.urlencode({'username':username})
-articles_json = json.loads(urllib.urlopen('https://api.zenn.dev/articles?%s' % params).read())["articles"]
+import feedparser # pip install feedparser
+import datetime
+import time
+import sys
 
 class Article:
   def __init__(self, json):
-    self.id         = json["id"]
-    self.title      = json["title"].encode('utf-8')
-    self.created_at = json["created_at"].encode('utf-8')
-    self.published  = json["published"]
-    self.url        = 'https://zenn.dev/%s/articles/%s' % (username, json["slug"].encode('utf-8'))
+    self.title      = json['title']
+    self.link       = json['link']
+    self.published  = datetime.datetime.fromtimestamp(time.mktime(json['published_parsed'])+3600*9).isoformat() + "+09:00"
 
-articles = sorted(filter(lambda article: article.published, [Article(json) for json in articles_json]), key=lambda article: article.created_at)
-for article in articles:
-  print "%d,%s,%s,%s" % (article.id, article.title, article.url, article.created_at)
+def parse(username):
+  articles_json = feedparser.parse('https://zenn.dev/' + username + '/feed').entries
+  return sorted([Article(json) for json in articles_json], key=lambda article: article.published)
+
+if __name__=='__main__':
+  if len(sys.argv) > 0:
+    articles = parse(sys.argv[1])
+    for article in articles:
+      print(article.published, article.link, article.title, sep=',')
+  else:
+    print("Usage: main.py [username]")
 
