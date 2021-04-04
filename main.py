@@ -16,6 +16,8 @@ class Article:
     self.url        = 'https://zenn.dev/%s/articles/%s' % (username, json["slug"].encode('utf-8'))
 
 articles = sorted(filter(lambda article: article.published, [Article(json) for json in articles_json]), key=lambda article: article.created_at)
+
+print "id,title,url,created_at"
 for article in articles:
   print "%d,%s,%s,%s" % (article.id, article.title, article.url, article.created_at)
 
