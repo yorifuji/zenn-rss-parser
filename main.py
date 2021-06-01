@@ -14,4 +14,4 @@ articles_json = feedparser.parse('https://zenn.dev/' + username + '/feed').entri
 articles = sorted(filter(lambda article: article.published, [Article(json) for json in articles_json]), key=lambda article: article.published)
 
 for article in articles:
-  print(article.title, article.link, article.published, sep=',')
+  print(article.link, article.published, article.title, sep=',')
