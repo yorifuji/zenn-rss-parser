@@ -1,11 +1,12 @@
 # get-zenn-articles
 
-This is a python script to get a list of Zenn articles.
+This is a python script to get a list of Zenn articles from rss feed.
 
 # Requirements
 
-- python 2
+- Docker
+    - python 3
 
 # How to use
 
->python2 main.py
+>make

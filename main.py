@@ -1,22 +1,17 @@
-
 import json
-import urllib
-
-username='yorifuji'
-
-params = urllib.urlencode({'username':username})
-articles_json = json.loads(urllib.urlopen('https://api.zenn.dev/articles?%s' % params).read())['articles']
+import feedparser
+import datetime
+import time
 
 class Article:
   def __init__(self, json):
-    self.id         = json['id']
-    self.title      = json['title'].encode('utf-8')
-    self.created_at = json['created_at'].encode('utf-8')
-    self.published  = json['published']
-    self.url        = 'https://zenn.dev/%s/articles/%s' % (username, json['slug'].encode('utf-8'))
+    self.title      = json['title']
+    self.link       = json['link']
+    self.published  = datetime.datetime.fromtimestamp(time.mktime(json['published_parsed'])+3600*9).isoformat() + "+09:00"
 
-articles = sorted(filter(lambda article: article.published, [Article(json) for json in articles_json]), key=lambda article: article.created_at)
+username='yorifuji'
+articles_json = feedparser.parse('https://zenn.dev/' + username + '/feed').entries
+articles = sorted(filter(lambda article: article.published, [Article(json) for json in articles_json]), key=lambda article: article.published)
 
-print 'id,title,url,created_at'
 for article in articles:
-  print '%d,%s,%s,%s' % (article.id, article.title, article.url, article.created_at)
+  print(article.title, article.link, article.published, sep=',')
