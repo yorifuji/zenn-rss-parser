@@ -1,5 +1,5 @@
 import json
-import feedparser
+import feedparser # pip install feedparser
 import datetime
 import time
 
@@ -10,8 +10,9 @@ class Article:
     self.published  = datetime.datetime.fromtimestamp(time.mktime(json['published_parsed'])+3600*9).isoformat() + "+09:00"
 
 username='yorifuji'
+
 articles_json = feedparser.parse('https://zenn.dev/' + username + '/feed').entries
-articles = sorted(filter(lambda article: article.published, [Article(json) for json in articles_json]), key=lambda article: article.published)
+articles = sorted([Article(json) for json in articles_json], key=lambda article: article.published)
 
 for article in articles:
-  print(article.link, article.published, article.title, sep=',')
+  print(article.published, article.link, article.title, sep=',')
