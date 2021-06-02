@@ -12,13 +12,13 @@ class Article:
 
 def parse(username):
   articles_json = feedparser.parse('https://zenn.dev/' + username + '/feed').entries
-  articles = sorted([Article(json) for json in articles_json], key=lambda article: article.published)
-
-  for article in articles:
-    print(article.published, article.link, article.title, sep=',')
+  return sorted([Article(json) for json in articles_json], key=lambda article: article.published)
 
 if __name__=='__main__':
   if len(sys.argv) > 0:
-    parse(sys.argv[1])
+    articles = parse(sys.argv[1])
+    for article in articles:
+      print(article.published, article.link, article.title, sep=',')
   else:
     print("Usage: main.py [username]")
+
